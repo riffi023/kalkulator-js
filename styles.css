@@ -1,0 +1,210 @@
+
+
+/* Styling video background */
+#backgroundVideo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1; /* Memastikan video di belakang kontainer */
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* Menyesuaikan video agar memenuhi layar */
+}
+
+/* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Sebagai fallback warna */
+  overflow: hidden; /* Menyembunyikan scroll bar */
+}
+
+/* Kalkulator Styling */
+.calculator {
+  position: relative;
+  background-color: rgba(51, 51, 51, 0.8); /* Semi-transparan */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px; /* Batasi ukuran maksimal kalkulator */
+  border: 10px solid transparent;
+  z-index: 1;
+}
+
+/* Efek api dengan pseudo-element */
+.calculator::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHoycnhjeXA3ZXR0MDZsMmhzdGo1YW8zZGR4NHIzMjR2NG9vZmVzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pNsBooBjruKnm/giphy.gif")
+    no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+  border-radius: 15px;
+  pointer-events: none; /* Mencegah elemen ini dari berinteraksi */
+}
+
+/* Styling untuk tampilan dan tombol lainnya */
+#display {
+  width: 100%;
+  height: 50px;
+  background-color: #222;
+  color: #fff;
+  font-size: 2em;
+  text-align: right;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animasi untuk background dan transform */
+}
+
+button:hover {
+  background-color: #777;
+  transform: scale(1.05); /* Membesarkan tombol sedikit saat di-hover */
+}
+
+button.zero {
+  grid-column: span 2;
+}
+
+button:active {
+  background-color: #999;
+  transform: scale(0.95); /* Menjepit tombol sedikit saat di-klik */
+}
+
+/* Responsive Design for Different Screen Sizes */
+
+/* Tablet & Medium-sized devices */
+@media (max-width: 768px) {
+  .calculator {
+    max-width: 350px;
+    padding: 15px;
+  }
+
+  #display {
+    font-size: 1.75em;
+    height: 45px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 1.25em;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  .calculator {
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  #display {
+    font-size: 1.5em;
+    height: 40px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 1.1em;
+  }
+}
+
+#history {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Warna latar belakang semi-transparan */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    max-height: 200px; /* Batasi tinggi maksimal untuk riwayat */
+    overflow-y: auto; /* Tambahkan scrollbar vertikal jika konten melebihi tinggi */
+}
+
+
+#history h3 {
+  margin: 0;
+  color: #fff; /* Warna teks judul */
+  text-align: center;
+}
+
+#historyList {
+    list-style-type: none; /* Menghilangkan bullet point */
+    padding: 0;
+    margin: 0; /* Hilangkan margin */
+}
+
+#historyList li {
+    background-color: rgba(255, 255, 255, 0.2); /* Warna latar belakang item riwayat */
+    margin: 5px 0; /* Jarak antar item */
+    padding: 5px;
+    border-radius: 5px; /* Sudut melengkung */
+    color: #fff; /* Warna teks */
+    transition: background-color 0.3s;
+}
+
+#historyList li:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Efek hover untuk item riwayat */
+}
+
+/* Styling untuk tombol hapus */
+#historyList button {
+  margin-left: 0px;
+  background-color: #d9534f; /* Warna merah untuk tombol hapus */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#historyList button:hover {
+  background-color: #c9302c; /* Warna lebih gelap saat hover */
+}
+
+#minimizeHistory {
+    background-color: rgba(255,255,255,0.3);; /* Warna biru untuk tombol minimize */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* Jarak dengan daftar riwayat */
+}
+
+#minimizeHistory:hover {
+    background-color: rgba(255,255,255,0.3);; /* Warna lebih gelap saat hover */
+}
+
+h1 {
+    color: white;
+}
